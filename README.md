@@ -2,32 +2,45 @@
 
 Exemplo de Observablity.
 
-## Requisitos
+## Requirements
 
 Para buildar e executar a aplicação, você precisa ter baixado e configurado:
 
 - [JDK 17](https://www.oracle.com/br/java/technologies/javase/jdk17-archive-downloads.html)
-- [Maven 3](https://maven.apache.org)
+- [Maven](https://maven.apache.org)
 
-## Build da applicação
+## Build application
 ```shell
 cd observability
 mvn install
 ```
 
 
-## Como rodar a aplicação
+## Run application
 
 Existem várias maneiras de executar uma aplicação Spring Boot em sua máquina local. 
 Uma maneira é executar o método `main` na classe `com.deboramendes.observability.ObservabilityApplication` do seu IDE.
 
-## Zipkin
+## Servers
 
-É necessário um servidor Zipkin.
-Atualmente não existe um Saas do Zipkin.
-O início mais rápido é utilizando o Docker.
-O [Quickstart do Zipkin](https://zipkin.io/pages/quickstart) fornece o comando para imagem:
+A aplicação utiliza Zipkin, Prometheus e Grafana, para criar os servidores, execute o comando Docker:
+
 ```shell
-docker run -d -p 9411:9411 openzipkin/zipkin    
+ docker-compose up 
 ```
-A partir desse momento já possível acessar a [IU do Zipkin](http://localhost:9411/zipkin/).
+
+### Zipkin
+
+- [Zipkin IU](http://localhost:9411/zipkin/)
+
+### Prometheus
+- [Prometheus IU](http://localhost:9090/targets?search=)
+
+### Grafana
+- [Grafana IU](http://localhost:3000)
+- User: `admin`
+- Password: `admin`
+- Datasource configuration:
+  - Prometheus:
+    - URL: http://host.docker.internal:9090
+- Dashboards ready to import: https://grafana.com/grafana/dashboards/?plcmt=footer
