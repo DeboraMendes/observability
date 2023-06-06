@@ -1,6 +1,6 @@
 # Observablity
 
-Exemplo de Observablity.
+Exemplo de Observablity utilizando Micrometer Tracing (antigo Spring Cloud Sleuth), Zipkin, Prometheus e Grafana.
 
 ## Requirements
 
